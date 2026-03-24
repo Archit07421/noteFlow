@@ -28,11 +28,11 @@ const getNoteById = async (req, res) => {
 
 const createNote = async (req, res) => {
   try {
-    const { title = "", content = "" } = req.body;
+    const { title = "", description = "" } = req.body;
     const note = await Note.create({
       user: req.user.id,
       title,
-      content,
+      description,
     });
     return res.status(201).json(note);
   } catch (err) {
@@ -42,10 +42,15 @@ const createNote = async (req, res) => {
 
 const updateNote = async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, description, content } = req.body;
+    const bodyDescription = description !== undefined ? description : content;
+    const update = {};
+    if (title !== undefined) update.title = title;
+    if (bodyDescription !== undefined) update.description = bodyDescription;
+
     const note = await Note.findOneAndUpdate(
       { _id: req.params.id, user: req.user.id },
-      { ...(title !== undefined && { title }), ...(content !== undefined && { content }) },
+      update,
       { new: true, runValidators: true }
     );
     if (!note) {
