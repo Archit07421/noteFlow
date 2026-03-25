@@ -11,6 +11,8 @@ import Footer from './components/Footer.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
 import Notes from './pages/Notes.jsx'
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 function Landing() {
@@ -35,7 +37,8 @@ function AppLayout(){
       {location.pathname !== '/notes' && <Navbar/>}
       <Routes>
           <Route path="/" element={<Landing />} />
-
+          <Route path="/resetpassword/:token" element={<ResetPassword/>} />
+          <Route path="/forgotpassword" element={<ForgotPassword/>} />
           <Route
             path="/notes"
             element={

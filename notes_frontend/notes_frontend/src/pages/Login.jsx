@@ -1,11 +1,7 @@
-import { handleLogin } from "../services/authServices"
-import {useState } from "react"
-import {useNavigate} from "react-router-dom"
-
-
-
-
-
+import { handleLogin } from "../services/authServices";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Field({ label, children }) {
   return (
@@ -13,7 +9,7 @@ function Field({ label, children }) {
       <span className="text-sm font-medium text-zinc-900">{label}</span>
       {children}
     </label>
-  )
+  );
 }
 
 function Input(props) {
@@ -21,12 +17,12 @@ function Input(props) {
     <input
       {...props}
       className={[
-        'h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-900',
-        'placeholder:text-zinc-400',
-        'focus:outline-none focus:ring-2 focus:ring-zinc-900/10 focus:border-zinc-300',
-      ].join(' ')}
+        "h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-900",
+        "placeholder:text-zinc-400",
+        "focus:outline-none focus:ring-2 focus:ring-zinc-900/10 focus:border-zinc-300",
+      ].join(" ")}
     />
-  )
+  );
 }
 
 function Divider() {
@@ -34,37 +30,40 @@ function Divider() {
     <div className="relative my-6">
       <div className="h-px w-full bg-zinc-200" />
       <div className="absolute inset-0 -top-3 flex justify-center">
-        <span className="bg-white px-3 text-xs font-medium text-zinc-500">or</span>
+        <span className="bg-white px-3 text-xs font-medium text-zinc-500">
+          or
+        </span>
       </div>
     </div>
-  )
+  );
 }
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email , setEmail]=useState("");
-  const [password,setPassword]=useState(""); 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [formError, setFormError] = useState("");
 
   const login = async (e) => {
-    
     e.preventDefault();
     setFormError("");
 
-    console.log("DATA:",{email , password});
-  
+    console.log("DATA:", { email, password });
+
     const data = {
-      
       email,
-      password
-      
+      password,
     };
-  
+
     try {
       const res = await handleLogin(data);
 
       if (!res.ok) {
-        setFormError(res.data?.message || res.data?.error || "Login failed. Please try again.");
+        setFormError(
+          res.data?.message ||
+            res.data?.error ||
+            "Login failed. Please try again.",
+        );
         return;
       }
 
@@ -80,11 +79,11 @@ export default function Login() {
     <div className="min-h-screen bg-white text-zinc-900">
       <div className="mx-auto grid min-h-screen max-w-6xl grid-cols-1 px-4 py-10 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:py-16">
         <div className="lg:col-span-5">
-         
-
           <div className=" rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
             <div>
-              <h1 className="text-balance text-2xl font-semibold tracking-tight text-zinc-950">Welcome back</h1>
+              <h1 className="text-balance text-2xl font-semibold tracking-tight text-zinc-950">
+                Welcome back
+              </h1>
               <p className="mt-2 text-sm leading-relaxed text-zinc-600">
                 Sign in to continue where you left off.
               </p>
@@ -93,15 +92,32 @@ export default function Login() {
             <form className="mt-6 grid gap-4" onSubmit={login}>
               {formError ? (
                 <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-700">
-                  <span className="font-semibold text-zinc-900">Notice:</span> {formError}
+                  <span className="font-semibold text-zinc-900">Notice:</span>{" "}
+                  {formError}
                 </div>
               ) : null}
               <Field label="Email">
-                <Input type="email" name="email" placeholder="you@company.com" autoComplete="email" value={email} onChange={(e)=>setEmail(e.target.value)} required />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="you@company.com"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </Field>
 
               <Field label="Password">
-                <Input type="password" name="password" placeholder="••••••••" autoComplete="current-password" value={password} onChange={(e)=>setPassword(e.target.value)}  required />
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="••••••••"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
               </Field>
 
               <div className="flex items-center justify-between gap-3">
@@ -112,9 +128,11 @@ export default function Login() {
                   />
                   Remember me
                 </label>
-                <a href="#" className="text-sm font-medium text-zinc-900 hover:text-zinc-700">
-                  Forgot password?
-                </a>
+                <p className="text-sm mt-2">
+                  <a href="/forgotpassword" className="text-sm font-medium text-zinc-900 hover:text-zinc-700">
+                    Forgot Password?
+                  </a>
+                </p>
               </div>
 
               <button
@@ -134,8 +152,11 @@ export default function Login() {
               </button>
 
               <p className="mt-2 text-center text-sm text-zinc-600">
-                New to NoteFlow?{' '}
-                <a href="/signup" className="font-semibold text-zinc-900 hover:text-zinc-700">
+                New to NoteFlow?{" "}
+                <a
+                  href="/signup"
+                  className="font-semibold text-zinc-900 hover:text-zinc-700"
+                >
                   Create an account
                 </a>
               </p>
@@ -143,8 +164,15 @@ export default function Login() {
           </div>
 
           <p className="mt-6 text-xs text-zinc-500">
-            By continuing, you agree to our <a href="#terms" className="underline underline-offset-2">Terms</a> and{' '}
-            <a href="#privacy" className="underline underline-offset-2">Privacy Policy</a>.
+            By continuing, you agree to our{" "}
+            <a href="#terms" className="underline underline-offset-2">
+              Terms
+            </a>{" "}
+            and{" "}
+            <a href="#privacy" className="underline underline-offset-2">
+              Privacy Policy
+            </a>
+            .
           </p>
         </div>
 
@@ -154,22 +182,33 @@ export default function Login() {
             <div className="absolute right-[-160px] top-[-160px] h-[560px] w-[560px] rounded-full border border-zinc-100" />
 
             <div className="relative">
-              <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">Stay organized</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                Stay organized
+              </p>
               <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-zinc-950">
                 A calmer place for your thinking
               </h2>
               <p className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-zinc-600">
-                Capture ideas, sort with tags, and pick up on any device. NoteFlow keeps your notes simple and searchable.
+                Capture ideas, sort with tags, and pick up on any device.
+                NoteFlow keeps your notes simple and searchable.
               </p>
 
               <div className="mt-8 grid gap-3">
                 <div className="rounded-2xl border border-zinc-200 bg-white p-5">
-                  <p className="text-sm font-semibold text-zinc-950">Quick capture</p>
-                  <p className="mt-1 text-sm text-zinc-600">Write, pin, and tag in seconds—no clutter.</p>
+                  <p className="text-sm font-semibold text-zinc-950">
+                    Quick capture
+                  </p>
+                  <p className="mt-1 text-sm text-zinc-600">
+                    Write, pin, and tag in seconds—no clutter.
+                  </p>
                 </div>
                 <div className="rounded-2xl border border-zinc-200 bg-white p-5">
-                  <p className="text-sm font-semibold text-zinc-950">Secure sync</p>
-                  <p className="mt-1 text-sm text-zinc-600">Your notes stay protected and available everywhere.</p>
+                  <p className="text-sm font-semibold text-zinc-950">
+                    Secure sync
+                  </p>
+                  <p className="mt-1 text-sm text-zinc-600">
+                    Your notes stay protected and available everywhere.
+                  </p>
                 </div>
               </div>
 
@@ -207,5 +246,5 @@ export default function Login() {
         </div>
       </div>
     </div>
-  )
+  );
 }

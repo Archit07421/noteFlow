@@ -21,10 +21,12 @@ app.use((req,res,next)=>{
 
 const authRoutes = require('./routes/authRoutes');
 const notesRoutes = require('./routes/notesRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 
 app.use('/api/auth',authRoutes);
 app.use('/api',fetchUser,notesRoutes);
+app.use('/api',userRoutes);
 
 
 const PORT = 3000;
