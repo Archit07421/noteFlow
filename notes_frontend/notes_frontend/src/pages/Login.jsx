@@ -80,14 +80,9 @@ export default function Login() {
     <div className="min-h-screen bg-white text-zinc-900">
       <div className="mx-auto grid min-h-screen max-w-6xl grid-cols-1 px-4 py-10 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:py-16">
         <div className="lg:col-span-5">
-          <a href="/" className="inline-flex items-center gap-2">
-            <span className="grid h-10 w-10 place-items-center rounded-xl border border-zinc-200 bg-white">
-              <span className="h-4 w-4 rounded-sm bg-zinc-900" aria-hidden="true" />
-            </span>
-            <span className="text-sm font-semibold tracking-tight">NoteFlow</span>
-          </a>
+         
 
-          <div className="mt-10 rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
+          <div className=" rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
             <div>
               <h1 className="text-balance text-2xl font-semibold tracking-tight text-zinc-950">Welcome back</h1>
               <p className="mt-2 text-sm leading-relaxed text-zinc-600">

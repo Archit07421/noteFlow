@@ -1,5 +1,6 @@
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-
+import { useLocation } from 'react-router-dom'
+ 
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import Features from './components/Features.jsx'
@@ -27,10 +28,11 @@ function Landing() {
   )
 }
 
-function App(){
-  return (
-    <BrowserRouter>
-      <Navbar/>
+function AppLayout(){
+  const location = useLocation();
+  return(
+    <>
+      {location.pathname !== '/notes' && <Navbar/>}
       <Routes>
           <Route path="/" element={<Landing />} />
 
@@ -47,7 +49,18 @@ function App(){
 
           <Route path="/signup" element={<Signup />} />
       </Routes>
-      <Footer/>
+      {location.pathname !== '/notes' && <Footer/>}
+    </>
+  )
+
+
+}
+
+function App(){
+ 
+  return (
+    <BrowserRouter>
+      <AppLayout/>
     </BrowserRouter>
   )
 }

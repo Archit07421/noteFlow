@@ -116,7 +116,7 @@ const Notes = () => {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+    <div className="mx-auto max-w-8xl px-4 py-8 sm:px-6 sm:py-10">
       <div className="rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm sm:p-6">
         <header className="flex items-center justify-between border-b border-zinc-200 pb-4">
           <h1 className="text-xl font-semibold tracking-tight text-zinc-950 sm:text-2xl">NoteFlow</h1>

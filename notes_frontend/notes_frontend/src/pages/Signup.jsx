@@ -127,7 +127,7 @@ export default function Signup() {
     <div className="min-h-screen bg-white text-zinc-900">
       <div className="mx-auto grid min-h-screen max-w-6xl grid-cols-1 px-4 py-10 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:py-16">
         <div className="lg:col-span-5">
-          <div className="mt-10 rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
+          <div className=" rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
             <div>
               <h1 className="text-balance text-2xl font-semibold tracking-tight text-zinc-950">
                 Create your account
