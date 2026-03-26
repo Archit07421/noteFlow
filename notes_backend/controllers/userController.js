@@ -23,6 +23,8 @@ const forgotPassword = async (req, res) => {
       { expiresIn: "10m" }
     );
 
+    console.log("TOKEN:",token);
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {

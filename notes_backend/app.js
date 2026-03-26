@@ -25,8 +25,8 @@ const userRoutes = require('./routes/userRoutes');
 
 
 app.use('/api/auth',authRoutes);
-app.use('/api',fetchUser,notesRoutes);
 app.use('/api',userRoutes);
+app.use('/api',fetchUser,notesRoutes);
 
 
 const PORT = 3000;

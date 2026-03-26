@@ -37,8 +37,7 @@ function AppLayout(){
       {location.pathname !== '/notes' && <Navbar/>}
       <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/resetpassword/:token" element={<ResetPassword/>} />
-          <Route path="/forgotpassword" element={<ForgotPassword/>} />
+         
           <Route
             path="/notes"
             element={
@@ -49,6 +48,9 @@ function AppLayout(){
           />
 
           <Route path="/login" element={<Login />} />
+
+          <Route path="/resetpassword/:token" element={<ResetPassword/>} />
+          <Route path="/forgotpassword" element={<ForgotPassword/>} />
 
           <Route path="/signup" element={<Signup />} />
       </Routes>
