@@ -19,13 +19,22 @@ app.use((req,res,next)=>{
 
 
 
+
+
 const authRoutes = require('./routes/authRoutes');
 const notesRoutes = require('./routes/notesRoutes');
 const userRoutes = require('./routes/userRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 
+app.use("/upload", express.static("upload"));//static files
+
+
+//routes
 app.use('/api/auth',authRoutes);
 app.use('/api',userRoutes);
+app.use('/api/upload',uploadRoutes);
+
 app.use('/api',fetchUser,notesRoutes);
 
 
