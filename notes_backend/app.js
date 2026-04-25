@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const fetchUser = require('./middleware/fetchUser');
 require('dotenv').config();
+const passport = require('passport');
+require('./config/passport');
+
 
 
 
@@ -11,6 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(passport.initialize());
 
 app.use((req,res,next)=>{
     console.log(req.method , req.url);

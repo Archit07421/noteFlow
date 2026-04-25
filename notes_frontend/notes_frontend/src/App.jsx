@@ -13,6 +13,7 @@ import Signup from './pages/Signup.jsx'
 import Notes from './pages/Notes.jsx'
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import OAuthSuccess from './pages/OauthSuccess.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 function Landing() {
@@ -46,7 +47,7 @@ function AppLayout(){
               </ProtectedRoute>
             }
           />
-
+          <Route path="/oauth-success" element={<OAuthSuccess />} />
           <Route path="/login" element={<Login />} />
 
           <Route path="/resetpassword/:token" element={<ResetPassword/>} />

@@ -261,12 +261,13 @@ export default function Signup() {
                 Create account
               </button>
 
-              <button
-                type="button"
+              <a
+                
                 className="inline-flex h-11 items-center justify-center rounded-xl border border-zinc-200 bg-white px-5 text-sm font-semibold text-zinc-900 hover:bg-zinc-50"
+                href="http://localhost:3000/api/auth/google"
               >
                 Sign up with Google
-              </button>
+              </a>
 
               <p className="mt-2 text-center text-sm text-zinc-600">
                 Already have an account?{' '}
